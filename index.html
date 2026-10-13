@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>💪 VIT-A-FIT 😎 - BMI, Diet & Workout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bad+Script&family=Oswald:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f7f4;--card:#fff;--tx:#9b0909;--mu:#5f6f66;--ac:#781607;--bd:#dfe6e0;--soft:#e8f3ec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#761404;--card:#07136d;--tx:#a8dceb;--mu:#c9de0f;--ac:#168c4b;--bd:#2c3a32;--soft:#22302a}}
+:root[data-theme="dark"]{--bg:#121815;--card:#efe8ef;--tx:#041509;--mu:#9fb0a5;--ac:#19c164;--bd:#2c3a32;--soft:#22302a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 40px}
+h1{font-family:'Anton',Impact,sans-serif;font-size:2.6rem;letter-spacing:3px;font-weight:400;margin:0 0 4px}h2{margin:0 0 12px}
+.sub{color:var(--mu);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin-bottom:14px}
+.steps{display:flex;gap:6px;margin-bottom:16px}
+.steps span{flex:1;text-align:center;font-size:.8rem;padding:6px;border-radius:8px;background:var(--card);border:1px solid var(--bd);color:var(--mu)}
+.steps span.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+label{display:block;font-size:.85rem;color:var(--mu);margin:10px 0 4px}
+input,select{width:100%;padding:10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{background:var(--ac);color:#fff;border:0;padding:12px 18px;border-radius:10px;font-size:1rem;cursor:pointer;margin-top:16px}
+button.alt{background:transparent;color:var(--ac);border:1px solid var(--ac);margin-right:8px}
+.big{font-size:3rem;font-weight:700;color:var(--ac);line-height:1}
+.pill{display:inline-block;padding:3px 12px;border-radius:99px;background:var(--ac);color:#fff;font-size:.9rem;margin-left:8px}
+.bar{position:relative;height:12px;border-radius:6px;margin:16px 0 4px;background:linear-gradient(90deg,#4aa3df 0 18.5%,#4caf72 18.5% 40%,#f0b840 40% 60%,#e0614f 60% 100%)}
+.bar i{position:absolute;top:-5px;width:4px;height:22px;background:var(--tx);border-radius:2px}
+.meal{padding:10px 0;border-bottom:1px solid var(--bd)}.meal:last-child{border:0}
+.meal b{color:var(--ac)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.stats div{background:var(--bg);border-radius:10px;padding:10px}.stats b{display:block;font-size:1.2rem}
+.note{font-size:.8rem;color:var(--mu)}
+.warn{color:#c0612b;font-size:.9rem}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.day{background:var(--card);border:1px solid var(--bd);border-top:4px solid var(--ac);border-radius:12px;padding:14px}
+.day.rest{border-top-color:var(--bd);background:var(--soft)}
+.dh{display:flex;justify-content:space-between;align-items:center}
+.badge{font-size:.75rem;background:var(--soft);color:var(--ac);padding:2px 10px;border-radius:99px;font-weight:600}
+.focus{color:var(--mu);font-size:.9rem;margin:2px 0 6px}
+.day ul{margin:0;padding-left:18px;font-size:.92rem}.day li{margin:3px 0}
+.hide{display:none}
+.slogan{font-family:'Bad Script',cursive;font-weight:400;-webkit-text-stroke:.6px currentColor;font-size:1.4rem;letter-spacing:.5px}
+#msg,#dtip,#warn{font-weight:700}
+#dfood b{color:var(--ac)}
+body,input,select,button{font-family:'Poppins',system-ui,sans-serif}
+h2{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:1px;font-size:1.6rem}
+.steps span{font-weight:500}
+label{font-weight:500}
+.big{font-family:'Anton',Impact,sans-serif;font-weight:400}
+.hero{min-height:360px;border-radius:16px;margin-bottom:14px;padding:40px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('images/hero.jpg') center/cover no-repeat,#1a1a2e}
+.hero small{font-family:'Oswald',sans-serif;font-size:1.1rem;letter-spacing:4px}
+.hero h2{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:3rem;letter-spacing:3px;margin:4px 0 8px;color:#fff}
+.hero p{max-width:460px;margin:0 0 6px;color:#e6e6e6}
+.collage{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:110px;gap:8px;margin:0 0 14px}
+.tile{position:relative;overflow:hidden;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.t1{grid-row:span 2}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.feat div{background:var(--bg);border-radius:10px;padding:12px;font-size:.9rem}
+.cta{font-family:'Oswald',sans-serif;font-size:1.2rem;letter-spacing:1px;padding:14px 28px;display:block;margin:18px auto 8px}
+@media(max-width:560px){.row,.dgrid,.feat{grid-template-columns:1fr}.collage{grid-auto-rows:90px}}
+body.ex{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),url('images/bg.jpg') center/cover fixed no-repeat,#000}
+.wcard{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),url('images/vit.jpg') center/cover no-repeat,var(--card);color:#fff;border-color:transparent}
+.wcard h2{color:#fff}
+.wcard .note{color:#e6e6e6}
+.wcard .feat div{background:rgba(0,0,0,.45)}
+body{background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('images/site-bg.jpg') center/cover fixed no-repeat,var(--bg)}
+.dcard,#p1 .card{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),url('images/form-bg.jpg') center/cover no-repeat,var(--card);border-color:transparent}
+#p1 .diet-card{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),url('images/diet-bg.jpg') center/cover no-repeat,var(--card)}
+#p1 .meal b{color:#5fe0a0}
+#p1 .stats div{background:rgba(0,0,0,.45)}
+.dcard input,.dcard select{background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25)}
+.dcard select option{background:#1a1a2e;color:#fff}
+.dcard input:focus,.dcard select:focus{outline:2px solid var(--ac);border-color:transparent}
+#p1 .note{color:#e6e6e6}
+.day{background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),url('images/day-bg.jpg') center/cover no-repeat,var(--card)}
+.day.rest{background:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.85)),url('images/day-bg.jpg') center/cover no-repeat,var(--soft)}
+.log-card{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),url('images/log-bg.jpg') center/cover no-repeat,var(--card);border-color:transparent}
+#p2 select{background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25)}
+#p2 select option{background:#1a1a2e;color:#fff}
+#quote{color:#5fe0a0!important}
+.log-card .big{color:#5fe0a0}
+.badge{color:#5fe0a0}
+
+.tipbox{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);border-left:4px solid #5fe0a0;border-radius:12px;padding:12px 16px;margin-top:16px}
+.tipbox p{margin:0}
+#dtip{margin-bottom:10px!important}
+#dfood{line-height:1.8}
+#dfood b{color:#5fe0a0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>💪 VIT-A-FIT 😎</h1>
+<p class="sub slogan">Stay fit, Stay sharp!! Know your BMI and get your diet chart and workout plan.</p>
+<div class="steps hide" id="steps"><span id="s0" class="on">1 Details</span><span id="s1">2 BMI &amp; Diet</span><span id="s2">3 Exercise</span></div>
+
+<section id="pw">
+<div class="hero">
+<small>FUEL YOUR</small>
+<h2>BODY FITNESS</h2>
+<p>Know your BMI, eat right and move every day with a plan made for you.</p>
+<button class="cta" onclick="go(0)">Let's Get Started →</button>
+</div>
+<div class="collage">
+<div class="tile t1"><span>🏃</span><img src="images/jog1.jpg" alt="People jogging" onerror="this.remove()"></div>
+<div class="tile"><span>🥗</span><img src="images/food1.jpg" alt="Healthy salad" onerror="this.remove()"></div>
+<div class="tile"><span>🍎</span><img src="images/food2.jpg" alt="Fresh fruits" onerror="this.remove()"></div>
+<div class="tile"><span>🥦</span><img src="images/food3.jpg" alt="Healthy meal" onerror="this.remove()"></div>
+<div class="tile"><span>🏋️</span><img src="images/jog2.jpg" alt="Exercise" onerror="this.remove()"></div>
+</div>
+<div class="card wcard">
+<h2>Welcome to VIT-A-FIT</h2>
+<p>VIT-A-FIT turns your height and weight into a simple health plan. Find your Body Mass Index (BMI), get a diet chart matched to your BMI category, goal and food preference, and follow a weekly workout routine, with a daily streak to keep you consistent. Made for students, teachers and professors.</p>
+<div class="feat">
+<div><b>📏 Know your BMI</b><br>Enter your age, height and weight to see where you stand.</div>
+<div><b>🥗 Eat right</b><br>A diet chart for your BMI, goal and food choice, based on ICMR-NIN guidelines.</div>
+<div><b>💪 Move daily</b><br>A weekly workout plan and a streak tracker to keep you going.</div>
+</div>
+<p class="note" style="text-align:center">For education only. Not a substitute for medical advice.</p>
+</div>
+</section>
+
+<section id="p0" class="card dcard hide">
+<h2>Your details</h2>
+<div class="row">
+<div><label>Age</label><input id="age" type="number" value="20" min="10" max="90"></div>
+<div><label>Gender</label><select id="sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+<div><label>Height (cm)</label><input id="h" type="number" value="170"></div>
+<div><label>Weight (kg)</label><input id="w" type="number" value="65"></div>
+<div><label>Activity level</label><select id="act"><option value="1.2">Sedentary (little exercise)</option><option value="1.375" selected>Light (1–3 days/week)</option><option value="1.55">Moderate (3–5 days/week)</option><option value="1.725">Very active (6–7 days/week)</option></select></div>
+<div><label>Your goal</label><select id="goal"><option value="auto" selected>Auto (best for my BMI)</option><option value="-400">Lose weight</option><option value="0">Maintain</option><option value="400">Gain weight</option></select></div>
+<div><label>Food preference</label><select id="diet"><option value="veg">Vegetarian</option><option value="nonveg">Non-vegetarian</option></select></div>
+</div>
+<button class="alt" onclick="go(-1)">← Home</button><button onclick="calc()">Calculate BMI →</button>
+<p class="note" id="err"></p>
+</section>
+
+<section id="p1" class="hide">
+<div class="card">
+<div class="big" id="bmi"></div><span id="cat" class="pill"></span>
+<div class="bar"><i id="mark"></i></div>
+<p class="note">Underweight &lt;18.5 · Normal 18.5–24.9 · Overweight 25–29.9 · Obese 30+</p>
+<p id="msg"></p><p id="warn" class="warn"></p>
+</div>
+<div class="card">
+<h2>Daily targets</h2>
+<div class="stats"><div><b id="kcal"></b><span id="klab">kcal</span></div><div><b id="prot"></b><span id="plab">protein</span></div><div><b id="water"></b>water</div></div>
+</div>
+<div class="card diet-card"><h2>Diet chart</h2><div id="meals"></div><div class="tipbox"><p class="note" id="dtip"></p><p class="note" id="dfood"></p></div></div>
+<button class="alt" onclick="go(0)">← Back</button><button onclick="go(2)">Exercise plan →</button>
+</section>
+
+<section id="p2" class="hide">
+<h2>Your weekly workout</h2><p id="etip" class="sub"></p>
+<div class="dgrid" id="days"></div>
+<div class="card log-card" style="margin-top:14px"><h2>🔥 Daily log</h2>
+<p class="slogan" id="quote" style="margin:0 0 12px;color:var(--ac)">Never give up. Every rep counts! 💪</p>
+<div class="big" id="streak">0</div><span class="note"> day streak</span>
+<label>How was today's workout?</label>
+<select id="ws"><option value="full">Completed fully</option><option value="short">Did the short 15-min version</option><option value="miss">Missed</option></select>
+<button onclick="logToday()">Log today</button>
+<p id="logmsg"></p></div>
+<button class="alt" onclick="go(1)">← Back</button><button onclick="go(0)">Start over</button>
+<p class="note" style="margin-top:16px">⚠️ For education only, not medical advice. BMI doesn't measure muscle or body fat, and for South Asians health risk can begin at a lower BMI (about 23 for overweight). Warm up 5 min first, stop if you feel pain or dizziness, and check with a doctor or dietitian before major changes.</p>
+</section>
+</div>
+
+<script>
+const SPLIT=[.25,.10,.30,.10,.25];
+const FOODS={
+under:["Nuts, ghee, milk, paneer, eggs, bananas, whole grains, millets, leafy vegetables, dried fruits","Skipping meals, filling up on tea/water before meals, packaged snacks instead of real food"],
+normal:["Whole grains and millets, dal, leafy vegetables, fruits, curd, eggs/paneer/fish","Sugary drinks, deep-fried snacks, packaged and processed foods, heavy late-night meals"],
+over:["Vegetables and leafy greens (half your plate), dal, eggs/chicken/paneer, millets, fruit, curd","Sugary drinks, sweets, fried snacks, white bread, extra rice, fast food"],
+obese:["Vegetables and leafy greens (half your plate), dal, egg whites/fish/tofu, millets, fruit","Sugary drinks, sweets, fried and packaged snacks, fast food, large portions"]};
+const MEALS={
+under:{veg:[["Breakfast","2 paneer or besan parathas (1 tsp ghee) + 1 glass full-fat milk with 1 banana and 1 tbsp peanut butter"],["Mid-morning","1 glass banana or mango shake with 6 almonds + 2 dates"],["Lunch","3 whole-wheat rotis + 1 cup rice, 1 bowl dal with 1 tsp ghee, 1 bowl palak or leafy sabzi, 1 bowl curd"],["Evening","2 peanut chikki or a handful of roasted makhana + 1 glass milk"],["Dinner","2 rotis + 1 cup rice, 1 bowl rajma or chole, 100 g paneer, 1 bowl mixed veggies"]],
+ nonveg:[["Breakfast","3-egg omelette (1 tsp butter) + 2 whole-wheat toasts + 1 banana + 1 glass milk"],["Mid-morning","1 glass banana shake + 8 almonds"],["Lunch","1½ cups rice + 2 rotis, 150 g chicken or fish curry, 1 bowl dal, 1 bowl leafy sabzi, 1 bowl curd"],["Evening","2 boiled eggs + peanut butter sandwich (2 whole-wheat slices)"],["Dinner","3 rotis, egg curry (2 eggs) or 100 g chicken, 1 bowl veggies, 1 glass milk"]]},
+normal:{veg:[["Breakfast","1½ cups veg poha or upma (or 2 ragi dosas) + 1 glass milk or 1 bowl curd + 1 fruit"],["Mid-morning","1 fruit + 6 almonds or walnut halves"],["Lunch","2 multigrain rotis + ½ cup rice, 1 bowl dal, 1 bowl leafy or mixed sabzi, big salad, 1 bowl curd"],["Evening","1 small bowl roasted chana or sprouts chaat + tea (little sugar)"],["Dinner","2 rotis + 100 g paneer or tofu bhurji + 1 bowl veggies + salad"]],
+ nonveg:[["Breakfast","2-egg omelette + 2 whole-wheat bread slices + 1 fruit"],["Mid-morning","1 glass buttermilk + a handful of nuts"],["Lunch","2 multigrain rotis + ½ cup rice, 120 g grilled chicken or fish, 1 bowl dal, 1 bowl leafy sabzi, salad"],["Evening","2 boiled eggs or 1 bowl sprouts + tea"],["Dinner","2 rotis + chicken or egg curry (100 g / 2 eggs) + 1 bowl veggies"]]},
+over:{veg:[["Breakfast","2 besan or moong dal chillas with mint chutney + 1 cup green tea (no sugar)"],["Mid-morning","1 fruit: apple, guava or 1 cup papaya"],["Lunch","2 millet or whole-wheat rotis (no ghee) + 1 bowl dal + 2 bowls sabzi incl. leafy greens + cucumber salad + ½ bowl curd"],["Evening","½ cup roasted chana or sprouts + unsweetened tea"],["Dinner","100 g paneer or tofu + 2 bowls stir-fried veggies + 1 roti or ½ cup brown rice"]],
+ nonveg:[["Breakfast","2 boiled eggs or egg-white bhurji + 1 multigrain toast + 1 fruit"],["Mid-morning","1 glass buttermilk or 1 fruit"],["Lunch","2 rotis or ½ cup rice + 120 g grilled chicken/fish curry + 1 bowl dal + big salad + 1 bowl leafy sabzi"],["Evening","1 bowl sprouts salad or ½ cup roasted chana + green tea"],["Dinner","120 g grilled chicken or fish + 2 bowls sautéed veggies + 1 bowl clear soup"]]},
+obese:{veg:[["Breakfast","1 bowl vegetable oats or 1–2 moong dal chillas + green tea or black coffee (no sugar)"],["Mid-morning","1 fruit or cucumber/carrot sticks"],["Lunch","1 millet or whole-wheat roti + 1 bowl dal + 2 bowls veggies incl. leafy greens + big salad + ½ bowl curd (skip extra rice)"],["Evening","¼ cup roasted chana or a small bowl of sprouts"],["Dinner","100 g tofu or paneer, or 1 bowl dal soup + 2 bowls steamed or sautéed veggies; nothing fried"]],
+ nonveg:[["Breakfast","2 egg-white omelette with veggies + 1 multigrain toast + green tea"],["Mid-morning","1 fruit or 1 glass buttermilk"],["Lunch","1 roti + 100 g grilled chicken/fish + 1 bowl dal + 1 bowl leafy sabzi + big salad"],["Evening","1 boiled egg or 1 small bowl sprouts"],["Dinner","100–120 g grilled/steamed chicken or fish + 2 bowls steamed veggies + soup"]]}};
+const CAT={
+under:{n:"Underweight",d:"Your weight is below the healthy range. Aim to gain gradually with nutritious, calorie-dense food and strength training.",adj:400,pg:1.2,
+ t:"Eat a small calorie surplus (about 250–500 kcal/day), 5–6 times a day. Add nuts, dried fruit, ghee and milk. Eat within an hour after workouts.",
+ e:"Focus: build muscle with strength training, keep cardio light, and rest well.",
+ w:[["Mon","Upper body push",45,["Push-ups 3×8–12","Dumbbell shoulder press 3×10","Triceps dips 3×10","Plank 3×30 sec"]],
+ ["Tue","Lower body",45,["Squats 4×10","Lunges 3×10 per leg","Glute bridge 3×12","Calf raises 3×15"]],
+ ["Wed","Rest day",20,["Easy walk 20 min","Full-body stretching 10 min"]],
+ ["Thu","Upper body pull",45,["Dumbbell rows 4×10","Lat pulldown or assisted pull-ups 3×8","Biceps curls 3×10","Superman hold 3×20 sec"]],
+ ["Fri","Full body",50,["Light deadlift 3×8 (focus on form)","Goblet squat 3×10","Push-ups 3×10","Plank 3×40 sec"]],
+ ["Sat","Core + easy cardio",35,["Easy cycling or jog 15 min","Leg raises 3×12","Russian twists 3×15","Bird-dog 3×10"]],
+ ["Sun","Rest day",0,["Sleep 7–9 hours","Eat well, recover"]]]},
+normal:{n:"Normal",d:"Great! You are in the healthy range. Maintain your weight and keep building good habits.",adj:0,pg:0.9,
+ t:"Balanced plate: ½ vegetables, ¼ protein, ¼ carbs. Limit sugary drinks and fried snacks.",
+ e:"Focus: about 150 min of cardio per week plus 2 strength days (WHO-style plan).",
+ w:[["Mon","Cardio",35,["Brisk walk or jog 30 min","Cool-down stretch 5 min"]],
+ ["Tue","Strength A (full body)",40,["Squats 3×12","Push-ups 3×10","Dumbbell rows 3×12","Plank 3×40 sec"]],
+ ["Wed","Yoga & mobility",30,["Sun salutations 5 rounds","Cat-cow 10 reps","Hip openers 2 min per side","Child's pose 1 min"]],
+ ["Thu","Cardio",40,["Cycling, swimming or skipping 30–35 min","Cool-down 5 min"]],
+ ["Fri","Strength B (full body)",40,["Lunges 3×12","Shoulder press 3×10","Glute bridge 3×15","Bicycle crunches 3×15"]],
+ ["Sat","Fun activity",60,["Sport, hike, dance or long walk 45–60 min"]],
+ ["Sun","Rest day",0,["Light stretching or a leisure walk"]]]},
+over:{n:"Overweight",d:"Your weight is above the healthy range. A modest calorie deficit plus regular activity will help you move toward it.",adj:-400,pg:1.0,
+ t:"Moderate deficit (about 400–500 kcal/day), steady loss of ~0.5 kg/week. Keep protein high, eat more veggies, and cut sugary drinks and processed food first.",
+ e:"Focus: low-impact cardio most days, 2–3 strength sessions to protect muscle.",
+ w:[["Mon","Brisk walk",40,["Brisk walk 40 min (can split into 2×20)"]],
+ ["Tue","Strength A",40,["Bodyweight squats 3×12","Incline push-ups 3×10","Dumbbell rows 3×12","Plank 3×30 sec"]],
+ ["Wed","Low-impact cardio",40,["Cycling or swimming 30–40 min","Stretch 5 min"]],
+ ["Thu","Interval walk + core",40,["1 min fast / 2 min easy walk × 10","Dead bug 3×10","Standing knee raises 3×15"]],
+ ["Fri","Strength B",40,["Lunges 3×10","Glute bridge 3×15","Dumbbell shoulder press 3×10","Bird-dog 3×10"]],
+ ["Sat","Active fun",45,["Hike, dance, badminton or long walk 45 min"]],
+ ["Sun","Rest day",0,["Gentle stretching, 7–9 hours sleep"]]]},
+obese:{n:"Obese",d:"Your weight is well above the healthy range. Small, steady changes work best. Please talk to a doctor before an intense plan.",adj:-500,pg:0.9,
+ t:"Moderate deficit (about 500 kcal/day), aim for 5–7% weight loss first. Skip sugary drinks and processed food, use smaller portions, and avoid crash diets.",
+ e:"Focus: gentle low-impact activity, building up by about 5 min each week.",
+ w:[["Mon","Easy walk",25,["Easy-pace walk 20–30 min (can split 2×15)","You should be able to talk while walking"]],
+ ["Tue","Gentle strength",30,["Chair sit-to-stand 3×8","Wall push-ups 3×10","Resistance-band rows 3×12","Standing march 3×30 sec"]],
+ ["Wed","Joint-friendly cardio",25,["Swimming, water walking or stationary cycling 20–30 min"]],
+ ["Thu","Rest day",15,["Gentle stretching 15 min"]],
+ ["Fri","Walk + balance",35,["Walk 25–30 min","Heel-to-toe walk 3×10 steps","Single-leg stand 3×20 sec (hold a support)"]],
+ ["Sat","Gentle strength",30,["Glute bridge 3×10","Low step-ups 3×8","Band shoulder press 3×10","Seated knee lifts 3×12"]],
+ ["Sun","Rest day",0,["Relax, hydrate, sleep well"]]]}};
+const $=id=>document.getElementById(id);
+const MICRO="Do this 15-min home workout: 3 rounds of 50s squats, 50s push-ups, 50s mountain climbers, 50s plank (10s rest).";
+function load(){try{return JSON.parse(localStorage.getItem("fc")||"{}")}catch(e){return {}}}
+function save(d){try{localStorage.setItem("fc",JSON.stringify(d))}catch(e){}}
+function showStreak(){$("streak").textContent=load().streak||0}
+function logToday(){
+ const d=load(),today=new Date().toDateString(),s=$("ws").value;
+ if(d.last===today){$("logmsg").textContent="Already logged today. Come back tomorrow!";return}
+ if(s==="miss"){d.streak=0;$("logmsg").textContent="Missed today, streak reset. "+MICRO}
+ else{d.streak=(d.streak||0)+1;$("logmsg").textContent=s==="short"?"Short version counts! Streak saved 🔥":"Great job! Streak +1 🔥"}
+ d.last=today;save(d);showStreak()}
+const QUOTES=["Never give up. Every rep counts! 💪","Small steps every day lead to big changes.","Your only limit is you.","Sweat today, shine tomorrow. ✨","Stay strong. Stay VIT-A-FIT!","Discipline beats motivation. 🔥","Progress, not perfection.","One more rep. One more day."];
+function newQuote(){$("quote").textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)]}
+ function go(n){$("pw").classList.toggle("hide",n!==-1);$("steps").classList.toggle("hide",n===-1);[0,1,2].forEach(i=>{$("p"+i).classList.toggle("hide",i!==n);$("s"+i).classList.toggle("on",i<=n)});document.body.classList.toggle("ex",n===2);scrollTo(0,0)}
+function calc(){
+ const age=+$("age").value,h=+$("h").value,w=+$("w").value,f=$("sex").value==="f";
+ if(!(age>0&&h>=100&&h<=250&&w>=20&&w<=300)){$("err").textContent="Please enter valid age, height (100–250 cm) and weight (20–300 kg).";return}
+ $("err").textContent="";
+ const bmi=w/((h/100)**2),k=bmi<18.5?"under":bmi<25?"normal":bmi<30?"over":"obese",c=CAT[k];
+ let g=$("goal").value==="auto"?c.adj:+$("goal").value,warn="";
+ if(k==="under"&&g<0){g=c.adj;warn="Your BMI is underweight, so we switched your plan to weight gain. Losing weight isn't advised."}
+ if((k==="over"||k==="obese")&&g>0){g=c.adj;warn="Your BMI is above the healthy range, so we switched your plan to gradual weight loss."}
+ $("bmi").textContent=bmi.toFixed(1);$("cat").textContent=c.n;$("msg").textContent=c.d;$("warn").textContent=warn;
+ $("mark").style.left=Math.min(Math.max((bmi-12)/(40-12)*100,0),100)+"%";
+ const bmr=10*w+6.25*h-5*age+(f?-161:5),kcal=Math.max(Math.round(bmr*$("act").value+g),f?1200:1500);
+ const wl=Math.min((f?2.2:3.0)+Math.max(-0.4,Math.min(0.4,(w-(f?58:70))*0.01))+0.5+($("act").value>=1.55?0.5:0),4.2);
+const gl=g<0?"lose":g>0?"gain":"maintain",pwt=k==="obese"?25*(h/100)**2:w,pm=(g===0?1.05:1.4)+($("act").value>=1.55?0.2:0);
+$("kcal").textContent=kcal;$("prot").textContent=Math.round(pwt*pm);$("water").textContent=wl.toFixed(1)+"–"+(wl+0.5).toFixed(1)+" L";
+$("klab").textContent="kcal per day to "+gl+" weight";$("plab").textContent="g protein per day";
+$("meals").innerHTML=MEALS[k][$("diet").value].map((m,i)=>`<div class="meal"><b>${m[0]}</b> <span class="note">· ~${Math.round(kcal*SPLIT[i]/10)*10} kcal</span><br>${m[1]}</div>`).join("");
+ $("dtip").textContent="Tip: "+c.t;
+const pn=kcal<1700?"Small portions: take 1 roti (or ½ cup rice) less at lunch and dinner.":kcal<2300?"Regular portions: eat as listed.":"Large portions: add 1 roti (or ½ cup rice) at lunch and dinner.";
+$("dfood").innerHTML="<b>Focus on:</b> "+FOODS[k][0]+".<br><b>Limit:</b> "+FOODS[k][1]+".<br><b>Your portion size ("+kcal+" kcal):</b> "+pn+"<br><b>Daily limits (ICMR-NIN):</b> salt up to 5 g, cooking oil about 20–50 g.";
+ const tot=c.w.reduce((a,d)=>a+d[2],0);
+ $("etip").textContent=c.e+" About "+tot+" min this week.";
+ $("days").innerHTML=c.w.map(d=>`<div class="day${d[1].startsWith("Rest")?" rest":""}"><div class="dh"><b>${d[0]}</b><span class="badge">${d[2]?d[2]+" min":"Rest"}</span></div><div class="focus">${d[1]}</div><ul>${d[3].map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+ showStreak();newQuote();go(1)}
+</script>
+</body>
+</html>
